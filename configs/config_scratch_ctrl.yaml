@@ -1,0 +1,17 @@
+# ضابط: من الصفر بلا ميزة (نفس النظام تمامًا) — use_feature=false
+init_checkpoint: ""
+data:
+  gen_dir: "data/processed_clean"
+  gen_pos_dir: "data/processed_clean_oracle"
+  quran_dir: ""
+  quran_pos_dir: ""
+  quran_repeat: 0
+  max_seq_length: 300
+  gen_cap: 200000
+  val_cap: 8000
+  use_feature: false
+model: {name: "scratch-ctrl", d_model: 256, nhead: 8, num_encoder_layers: 4, dim_feedforward: 1024, dropout: 0.1, max_position: 512}
+training: {batch_size: 6, gradient_accumulation: 10, learning_rate: 3.0e-4, weight_decay: 0.01, warmup_steps: 500, max_steps: 10000, max_grad_norm: 1.0, label_smoothing: 0.0}
+logging: {output_dir: "outputs_scratch_ctrl", log_interval: 50, eval_interval: 1000}
+device: {use_cuda: true, mixed_precision: "fp16", num_workers: 0, pin_memory: true}
+seed: 42

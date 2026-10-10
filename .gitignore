@@ -1,0 +1,102 @@
+# البيئة الافتراضية
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# الأوزان والنماذج (خاصّة — لا تُرفع)
+outputs*/
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.onnx
+*.gguf
+*.ckpt
+
+# البيانات (ضخمة + رخص Tanzil/Tashkeela/الشاملة)
+data/
+!data/.gitkeep
+
+# صور ومخرجات
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.wav
+*.mp3
+
+# سجلّات ومؤقّتات ونسخ احتياطية
+*.log
+_to_delete/
+*.bak_*
+*.bak
+tmp/
+.cache/
+
+# أنظمة
+.DS_Store
+Thumbs.db
+
+# قواعد بيانات ولقطات أوزان ومجموعات io (بيانات/أوزان لا كود)
+*.db
+*.sqlite
+*.sqlite3
+compactshakkil_v*/
+outputs_*/
+*_io.txt
+review_disputed.txt
+bench_*.txt
+*_gold*.txt
+*_pred_*.txt
+
+# أوزان وصوت
+models/
+recordings/
+lexicon/*.db
+
+# أسرار API
+api_keys.json
+api_usage.log
+
+# فواتير (بيانات عملاء)
+bills_*.csv
+
+# تنفيذيّات وسجلّات وحالة تدريب
+*.exe
+deploy/access.log
+train_state.json
+*.pem
+
+# مكتبة الشاملة (بيانات/فهارس ضخمة)
+shamela/
+
+# صوت ونماذج صوتيّة
+train_data/
+voices/
+train_data_cas/
+
+# بيئات افتراضيّة إضافيّة وأدوات ومجلّدات ثقيلة
+my_env/
+nssm-2.24/
+logs/
+runs/
+_inspect/
+jawf_review/
+notebooks/
+samples_f5/
+samples_piper/
+samples_piper_jalalah/
+voices_test/
+المعالجة/
+
+# سرّ DuckDNS
+deploy/duckdns_token.txt
+deploy/duckdns_last.txt
+
+admin_token.txt
+panel_secret.txt
+semantic_config.json
+panel_auth.json

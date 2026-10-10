@@ -1,0 +1,281 @@
+
+══════════════════════════════════════════════════════════════════════════
+║ المجموعة 1 — ز.و.غ / ز.ي.غ (زاغ)
+══════════════════════════════════════════════════════════════════════════
+
+▌ زيغان  (12 تحليل)
+    root=ز.#.غ     pos=noun   pat=1َيَ3ان  turning_aside;deviation
+    root=ز.#.غ     pos=noun   pat=1َيَ3انَ turning_aside;deviation+[def.acc.]
+    root=ز.#.غ     pos=noun   pat=1َيَ3انٌ turning_aside;deviation+[indef.nom
+    root=ز.#.غ     pos=noun   pat=1َيَ3انِ turning_aside;deviation+[def.gen.]
+    root=ز.#.غ     pos=noun   pat=1َيَ3انٍ turning_aside;deviation+[indef.gen
+
+▌ زاغ  (8 تحليل)
+    root=ز.#.غ     pos=verb   pat=1ا3َ     depart;turn_aside;wander+he;it_<ve
+    root=ز.#.غ     pos=noun   pat=1ا3      crow
+    root=ز.#.غ     pos=noun   pat=1ا3َ     crow+[def.acc.]
+    root=ز.#.غ     pos=noun   pat=1ا3ٌ     crow+[indef.nom.]
+    root=ز.#.غ     pos=noun   pat=1ا3ِ     crow+[def.gen.]
+
+▌ زوغ  (0 تحليل)
+
+▌ مزوغ  (0 تحليل)
+
+▌ زوغان  (0 تحليل)
+
+▌ ازاغ  (2 تحليل)
+    root=ز.#.غ     pos=verb   pat=أَ1ا3َ   make_deviate;avert+he;it_<verb>
+    root=ز.#.غ     pos=verb   pat=أُ1ا3    I+be_deviated;be_averted
+
+▌ يزوغ  (1 تحليل)
+    root=ز.#.غ     pos=verb   pat=يَ1ُو3   he;it+turn_aside;deviate;swindle
+
+▌ يزيغ  (2 تحليل)
+    root=ز.#.غ     pos=verb   pat=يُ1ِي3   he;it+make_deviate;avert
+    root=ز.#.غ     pos=verb   pat=يَ1ِي3   he;it+depart;turn_aside;wander
+
+  ── توزيع الجذور في المجموعة ──
+     ز.#.غ      × 15
+
+══════════════════════════════════════════════════════════════════════════
+║ المجموعة 2 — ك.ي.د (كاد/كيد)
+══════════════════════════════════════════════════════════════════════════
+
+▌ كيود  (3 تحليل)
+    root=#.#.د     pos=noun   pat=كَيُو3   like;such_as+iodine
+    root=#.#.د     pos=noun   pat=كَيُو3ِ  like;such_as+iodine+[def.gen.]
+    root=#.#.د     pos=noun   pat=كَيُو3ٍ  like;such_as+iodine+[indef.gen.]
+
+▌ مكيدون  (0 تحليل)
+
+▌ مكايد  (4 تحليل)
+    root=ك.#.د     pos=noun   pat=مَ1ايِ3  stratagems;ruses;schemes
+    root=ك.#.د     pos=noun   pat=مَ1ايِ3َ stratagems;ruses;schemes+[def.acc.
+    root=ك.#.د     pos=noun   pat=مَ1ايِ3ِ stratagems;ruses;schemes+[def.gen.
+    root=ك.#.د     pos=noun   pat=مَ1ايِ3ُ stratagems;ruses;schemes+[def.nom.
+
+▌ مكائد  (0 تحليل)
+
+▌ كياد  (6 تحليل)
+    root=ك.#.د     pos=noun   pat=1ِيا3    stratagems;ruses
+    root=ك.#.د     pos=noun   pat=1ِيا3َ   stratagems;ruses+[def.acc.]
+    root=ك.#.د     pos=noun   pat=1ِيا3ٌ   stratagems;ruses+[indef.nom.]
+    root=ك.#.د     pos=noun   pat=1ِيا3ِ   stratagems;ruses+[def.gen.]
+    root=ك.#.د     pos=noun   pat=1ِيا3ٍ   stratagems;ruses+[indef.gen.]
+
+▌ مكيدة  (1 تحليل)
+    root=ك.#.د     pos=noun   pat=مَ1ِي3َةٌ stratagem;ruse;conspiracy+[fem.sg.
+
+▌ كيد  (9 تحليل)
+    root=ك.#.د     pos=noun   pat=1َيْ3    stratagem;ruse
+    root=ك.#.د     pos=noun   pat=1َيْ3َ   stratagem;ruse+[def.acc.]
+    root=ك.#.د     pos=noun   pat=1َيْ3ٌ   stratagem;ruse+[indef.nom.]
+    root=ك.#.د     pos=noun   pat=1َيْ3ِ   stratagem;ruse+[def.gen.]
+    root=ك.#.د     pos=noun   pat=1َيْ3ٍ   stratagem;ruse+[indef.gen.]
+
+▌ مكيد  (0 تحليل)
+
+▌ كاد  (6 تحليل)
+    root=ك.#.د     pos=verb   pat=1ا3َ     deceive;harm+he;it_<verb>
+    root=ك.#.د     pos=verb   pat=1ا3َ     almost;hardly;no_sooner+he;it_<ver
+    root=ك.#.د     pos=verb   pat=1َأَ3َ   be_sad;be_worried+he;it_<verb>
+    root=#.د.د     pos=noun   pat=كَإِ2ّ   like;such_as+horrible;evil
+    root=#.د.د     pos=noun   pat=كَإِ2ِّ  like;such_as+horrible;evil+[def.ge
+
+▌ كايد  (3 تحليل)
+    root=ك.#.د     pos=verb   pat=1ايَ3َ   deceive;outwit+he;it_<verb>
+    root=#.د.#     pos=noun   pat=كَأَيْ2  like;such_as+hands
+    root=#.د.#     pos=noun   pat=كَأَيْ2ٍ like;such_as+hands+[indef.gen.]
+
+▌ اكتاد  (0 تحليل)
+
+▌ تكايد  (2 تحليل)
+    root=ك.#.د     pos=verb   pat=تُ1ايِ3  you_[masc.sg.]+deceive;outwit
+    root=ك.#.د     pos=verb   pat=تُ1ايِ3  it;they;she+deceive;outwit
+
+▌ يكيد  (1 تحليل)
+    root=ك.#.د     pos=verb   pat=يَ1ِي3   he;it+deceive;harm
+
+▌ يكايد  (1 تحليل)
+    root=ك.#.د     pos=verb   pat=يُ1ايِ3  he;it+deceive;outwit
+
+▌ يكتاد  (0 تحليل)
+
+▌ يتكايد  (0 تحليل)
+
+  ── توزيع الجذور في المجموعة ──
+     ك.#.د      × 23
+     #.#.د      × 3
+     #.د.د      × 2
+     #.د.#      × 2
+
+══════════════════════════════════════════════════════════════════════════
+║ المجموعة 3 — ح.ر.ر / ح.و.ر (حرّ/حار)
+══════════════════════════════════════════════════════════════════════════
+
+▌ محر  (6 تحليل)
+    root=ح.ر.ر     pos=noun   pat=مِ1َ2ّ   heating_system
+    root=ح.ر.ر     pos=noun   pat=مِ1َ2َّ  heating_system+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=مِ1َ2ٌّ  heating_system+[indef.nom.]
+    root=ح.ر.ر     pos=noun   pat=مِ1َ2ِّ  heating_system+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=مِ1َ2ٍّ  heating_system+[indef.gen.]
+
+▌ حار  (8 تحليل)
+    root=ح.#.ر     pos=noun   pat=1ا3      hot;fervent
+    root=ح.#.ر     pos=noun   pat=1ا3َ     hot;fervent+[def.acc.]
+    root=ح.#.ر     pos=noun   pat=1ا3ٌ     hot;fervent+[indef.nom.]
+    root=ح.#.ر     pos=noun   pat=1ا3ِ     hot;fervent+[def.gen.]
+    root=ح.#.ر     pos=noun   pat=1ا3ٍ     hot;fervent+[indef.gen.]
+
+▌ محرور  (6 تحليل)
+    root=ح.ر.ر     pos=noun   pat=مَ1ْ2ُو3 passionate;fervent
+    root=ح.ر.ر     pos=noun   pat=مَ1ْ2ُو3َ passionate;fervent+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=مَ1ْ2ُو3ٌ passionate;fervent+[indef.nom.]
+    root=ح.ر.ر     pos=noun   pat=مَ1ْ2ُو3ِ passionate;fervent+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=مَ1ْ2ُو3ٍ passionate;fervent+[indef.gen.]
+
+▌ حريري  (8 تحليل)
+    root=ح.ر.ر     pos=noun   pat=1َ2ِي3ِي silk+my
+    root=ح.ر.ر     pos=adj    pat=1َ2ِي3ِيّ silken;silk
+    root=ح.ر.ر     pos=adj    pat=1َ2ِي3ِيَّ silken;silk+[def.acc.]
+    root=ح.ر.ر     pos=adj    pat=1َ2ِي3ِيٌّ silken;silk+[indef.nom.]
+    root=ح.ر.ر     pos=adj    pat=1َ2ِي3ِيِّ silken;silk+[def.gen.]
+
+▌ حراريات  (2 تحليل)
+    root=ح.ر.ر     pos=adj    pat=1َ2ا3ِيّاتِ thermal;caloric+[fem.pl.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ا3ِيّاتِ calorie+[fem.pl.]
+
+▌ حرور  (6 تحليل)
+    root=ح.ر.ر     pos=noun   pat=1َ2ُو3   hot_wind
+    root=ح.ر.ر     pos=noun   pat=1َ2ُو3َ  hot_wind+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ُو3ٌ  hot_wind+[indef.nom.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ُو3ِ  hot_wind+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ُو3ٍ  hot_wind+[indef.gen.]
+
+▌ محار  (6 تحليل)
+    root=م.ح.ر     pos=noun   pat=1َ2ا3    oysters;shellfish;mother-of-pearl
+    root=م.ح.ر     pos=noun   pat=1َ2ا3َ   oysters;shellfish;mother-of-pearl+
+    root=م.ح.ر     pos=noun   pat=1َ2ا3ٌ   oysters;shellfish;mother-of-pearl+
+    root=م.ح.ر     pos=noun   pat=1َ2ا3ِ   oysters;shellfish;mother-of-pearl+
+    root=م.ح.ر     pos=noun   pat=1َ2ا3ٍ   oysters;shellfish;mother-of-pearl+
+
+▌ احرار  (12 تحليل)
+    root=ح.ر.ر     pos=noun   pat=أَ1ْ2ا3  free;independent
+    root=ح.ر.ر     pos=noun   pat=أَ1ْ2ا3َ free;independent+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=أَ1ْ2ا3ٌ free;independent+[indef.nom.]
+    root=ح.ر.ر     pos=noun   pat=أَ1ْ2ا3ِ free;independent+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=أَ1ْ2ا3ٍ free;independent+[indef.gen.]
+
+▌ حرار  (12 تحليل)
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3   silk_weaver
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3َ  silk_weaver+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3ٌ  silk_weaver+[indef.nom.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3ِ  silk_weaver+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3ٍ  silk_weaver+[indef.gen.]
+
+▌ حرائر  (12 تحليل)
+    root=ح.ر.ر     pos=noun   pat=1َ2ائِ3  silken;silk
+    root=ح.ر.ر     pos=noun   pat=1َ2ائِ3َ silken;silk+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ائِ3ِ silken;silk+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ائِ3ُ silken;silk+[def.nom.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ائِ3  hot_winds
+
+▌ حر  (13 تحليل)
+    root=ح.ر.ر     pos=verb   pat=1َ2َّ    be_hot+he;it_<verb>
+    root=ح.ر.ر     pos=adj    pat=1ُ2ّ     free;independent
+    root=ح.ر.ر     pos=adj    pat=1ُ2َّ    free;independent+[def.acc.]
+    root=ح.ر.ر     pos=adj    pat=1ُ2ٌّ    free;independent+[indef.nom.]
+    root=ح.ر.ر     pos=adj    pat=1ُ2ِّ    free;independent+[def.gen.]
+
+▌ احر  (6 تحليل)
+    root=حرّ       pos=noun   pat=أَ1َ23   hotter;hottest;warmer;warmest
+    root=حرّ       pos=noun   pat=أَ1َ23َ  hotter;hottest;warmer;warmest+[def
+    root=حرّ       pos=noun   pat=أَ1َ23ِ  hotter;hottest;warmer;warmest+[def
+    root=حرّ       pos=noun   pat=أَ1َ23ُ  hotter;hottest;warmer;warmest+[def
+    root=ح.ر.#     pos=verb   pat=أَ1ْ2    I+be_able;be_possible
+
+▌ حرية  (4 تحليل)
+    root=ح.ر.ر     pos=adj    pat=1ُ2َّيْهِ free;independent+his;its_two
+    root=ح.ر.#     pos=adj    pat=1َ2ِيَّةٌ adequate;suitable+[fem.sg.]
+    root=ح.ر.#     pos=adj    pat=1َ2ِيُّهُ adequate;suitable+its;his
+    root=ح.ر.ر     pos=noun   pat=1ُ2ِّيَّةٌ freedom+[fem.sg.]
+
+▌ حرورية  (0 تحليل)
+
+▌ حرى  (12 تحليل)
+    root=ح.ر.ر     pos=adj    pat=1ُ2َّيَّ free;independent+my_two
+    root=ح.ر.ر     pos=adj    pat=1ُ2َّيْ  free;independent+two
+    root=ح.ر.ر     pos=adj    pat=1ُ2ِّي   free;independent+my
+    root=ح.ر.ر     pos=noun   pat=1َ2ِّي   warmth;heat+my
+    root=ح.ر.ر     pos=noun   pat=1َ2َّى   thirsty;passionate
+
+▌ حرير  (6 تحليل)
+    root=ح.ر.ر     pos=noun   pat=1َ2ِي3   silk
+    root=ح.ر.ر     pos=noun   pat=1َ2ِي3َ  silk+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ِي3ٌ  silk+[indef.nom.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ِي3ِ  silk+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ِي3ٍ  silk+[indef.gen.]
+
+▌ حران  (5 تحليل)
+    root=ح.ر.ر     pos=adj    pat=1ُ2ّانِ  free;independent+two
+    root=ح.ر.ر     pos=noun   pat=1َ2ّان   thirsty;passionate
+    root=ح.ر.ر     pos=noun   pat=1َ2ّانَ  thirsty;passionate+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّانِ  thirsty;passionate+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّانُ  thirsty;passionate+[def.nom.]
+
+▌ حرار  (12 تحليل)
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3   silk_weaver
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3َ  silk_weaver+[def.acc.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3ٌ  silk_weaver+[indef.nom.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3ِ  silk_weaver+[def.gen.]
+    root=ح.ر.ر     pos=noun   pat=1َ2ّا3ٍ  silk_weaver+[indef.gen.]
+
+▌ حرة  (4 تحليل)
+    root=ح.ر.ر     pos=adj    pat=1ُ2َّةٌ  free;independent+[fem.sg.]
+    root=ح.ر.ر     pos=adj    pat=1ُ2ُّهُ  free;independent+its;his
+    root=ح.ر.ر     pos=noun   pat=1َ2ُّهُ  warmth;heat+its;his
+    root=ح.ر.ر     pos=noun   pat=1َ2َّةٌ  stony_area;lava_field+[fem.sg.]
+
+▌ استحر  (2 تحليل)
+    root=ح.ر.ر     pos=verb   pat=ٱِسْتَ1َ2َّ flare_up;be_heated+he;it_<verb>
+    root=ح.ر.ر     pos=verb   pat=أَسْتَ1ِ2ّ I+flare_up;be_heated
+
+▌ احر  (6 تحليل)
+    root=حرّ       pos=noun   pat=أَ1َ23   hotter;hottest;warmer;warmest
+    root=حرّ       pos=noun   pat=أَ1َ23َ  hotter;hottest;warmer;warmest+[def
+    root=حرّ       pos=noun   pat=أَ1َ23ِ  hotter;hottest;warmer;warmest+[def
+    root=حرّ       pos=noun   pat=أَ1َ23ُ  hotter;hottest;warmer;warmest+[def
+    root=ح.ر.#     pos=verb   pat=أَ1ْ2    I+be_able;be_possible
+
+▌ حرر  (2 تحليل)
+    root=ح.ر.ر     pos=verb   pat=1َ2َّ3َ  liberate;free+he;it_<verb>
+    root=ح.ر.ر     pos=verb   pat=1َ2َّ3َ  edit+he;it_<verb>
+
+▌ يحر  (6 تحليل)
+    root=ح.#.ر     pos=verb   pat=يُ1ِ3    he;it+answer;reply
+    root=ح.ر.#     pos=verb   pat=يُ1ْ2    he;it+make_worthy
+    root=ح.ر.#     pos=verb   pat=يَ1ْ2    he;it+be_able;be_possible
+    root=ح.ر.ر     pos=verb   pat=يَ1ُ2ّ   he;it+be_hot
+    root=ح.#.ر     pos=verb   pat=يَ1َ3    he;it+be_confused;be_helpless;hesi
+
+▌ يحر  (6 تحليل)
+    root=ح.#.ر     pos=verb   pat=يُ1ِ3    he;it+answer;reply
+    root=ح.ر.#     pos=verb   pat=يُ1ْ2    he;it+make_worthy
+    root=ح.ر.#     pos=verb   pat=يَ1ْ2    he;it+be_able;be_possible
+    root=ح.ر.ر     pos=verb   pat=يَ1ُ2ّ   he;it+be_hot
+    root=ح.#.ر     pos=verb   pat=يَ1َ3    he;it+be_confused;be_helpless;hesi
+
+▌ يستحر  (1 تحليل)
+    root=ح.ر.ر     pos=verb   pat=يَسْتَ1ِ2ّ he;it+flare_up;be_heated
+
+▌ يحرر  (3 تحليل)
+    root=ح.ر.ر     pos=verb   pat=يُ1َ2ِّ3 he;it+liberate;free
+    root=ح.ر.ر     pos=verb   pat=يُ1َ2ِّ3 he;it+edit
+    root=ح.ر.ر     pos=verb   pat=يَ1ْ2ُ3  he;it+be_hot
+
+  ── توزيع الجذور في المجموعة ──
+     ح.ر.ر      × 78
+     ح.#.ر      × 9
+     حرّ        × 8
+     ح.ر.#      × 8
+     م.ح.ر      × 5

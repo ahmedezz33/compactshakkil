@@ -1,0 +1,40 @@
+# config_v4_big.yaml — أساسٌ أكبر سعةً (384/6) على البيانات النظيفة الموسَّعة.
+# المرحلة (أ) من رفع السعة: يُدرَّب أساسٌ من الصفر ثمّ يُطعَّم عليه CAMeLBERT.
+# التشغيل: python scripts/train_hard.py --config configs/config_v4_big.yaml
+seed: 1
+init_checkpoint: outputs_v4_big/best_model.pt   # استئنافٌ من الأساس المحفوظ (لا من الصفر)
+
+device:
+  use_cuda: true
+  num_workers: 0                   # ويندوز: workers>0 تنسخ البياناتِ الضخمةَ لكلّ عمليّة → نفادُ الذاكرة
+  pin_memory: false
+  mixed_precision: fp16
+
+data:
+  max_seq_length: 250
+  gen_dir: data/processed_max      # البيانات النظيفة الموسَّعة
+  gen_cap: 1200000                 # 1.2 مليون سطرٍ (كافٍ، ويخفّف ذاكرةَ النظام)
+  val_cap: 8000
+  # لا خلطَ صعبٍ ولا قرآن: أساسٌ نظيفٌ عامّ (القرآن يُغطّى بالاسترداد في التطبيق)
+
+model:
+  d_model: 384                     # كان 256 — زيادةُ السعة
+  nhead: 6
+  num_encoder_layers: 6            # كان 4
+  dim_feedforward: 1536            # كان 1024
+  dropout: 0.1
+  max_position: 512
+
+training:
+  batch_size: 48
+  learning_rate: 3.0e-4
+  weight_decay: 0.01
+  gradient_accumulation: 1
+  max_steps: 60000                 # ~1.2 حقبة على 2.5 مليون سطر
+  warmup_steps: 1500
+  max_grad_norm: 1.0
+  label_smoothing: 0.0
+
+logging:
+  output_dir: outputs_v4_big
+  eval_interval: 2000

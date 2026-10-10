@@ -1,0 +1,11 @@
+# الكبير 384×6 (~11M) على كامل البيانات العامّة — من الصفر (قياس النشر)
+data:
+  gen_dir: "data/processed_clean"
+  gen_cap: 0            # 0 = بلا حدّ (كامل train.txt)
+  val_cap: 8000
+  max_seq_length: 300
+model: {name: "big-full-384x6", d_model: 384, nhead: 8, num_encoder_layers: 6, dim_feedforward: 1536, dropout: 0.1, max_position: 512}
+training: {batch_size: 6, gradient_accumulation: 10, learning_rate: 3.0e-4, weight_decay: 0.01, warmup_steps: 1000, max_steps: 40000, max_grad_norm: 1.0, label_smoothing: 0.0}
+logging: {output_dir: "outputs_big_full", eval_interval: 2000}
+device: {use_cuda: true, mixed_precision: "fp16", num_workers: 0, pin_memory: true}
+seed: 42

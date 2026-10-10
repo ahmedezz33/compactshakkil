@@ -1,0 +1,14 @@
+# استبدل النطاق بنطاقك (DuckDNS مثلًا). Caddy يُصدِر شهادة HTTPS تلقائيًّا.
+shakkil.duckdns.org {
+    reverse_proxy 127.0.0.1:8000
+    encode gzip
+    request_body {
+        max_size 25MB
+    }
+    header {
+        -Server
+    }
+    log {
+        output file access.log
+    }
+}

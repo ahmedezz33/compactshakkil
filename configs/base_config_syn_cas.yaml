@@ -1,0 +1,47 @@
+# CompactShakkil-Syn(CAS) — تجربة السقف الأعلى (oracle): حقن الحالة الإعرابيّة
+# نفس أنبوب POS، لكنّ الميزة = الحالة (اسميّ/نصبيّ/جرّيّ) من CAMeL.
+# تحذير علميّ: cas ≈ حركة الآخِر نفسها ⇒ هذا حدٌّ أعلى للاسترشاد، لا نموذجٌ ناشر.
+
+init_checkpoint: "outputs_v3_unified/latest.pt"
+
+data:
+  gen_dir: "data/processed_clean"
+  gen_pos_dir: "data/processed_clean_cas"    # مخرَج morph_extract feat=cas
+  quran_dir: ""
+  quran_pos_dir: ""
+  quran_repeat: 0
+  max_seq_length: 300
+  gen_cap: 200000
+  val_cap: 8000
+
+model:
+  name: "CompactShakkil-Syn-CAS"
+  d_model: 256
+  nhead: 8
+  num_encoder_layers: 4
+  dim_feedforward: 1024
+  dropout: 0.1
+  max_position: 512
+
+training:
+  batch_size: 6
+  gradient_accumulation: 10
+  learning_rate: 4.0e-5
+  weight_decay: 0.01
+  warmup_steps: 100
+  max_steps: 4000
+  max_grad_norm: 1.0
+  label_smoothing: 0.0
+
+logging:
+  output_dir: "outputs_syn_cas"
+  log_interval: 20
+  eval_interval: 400
+
+device:
+  use_cuda: true
+  mixed_precision: "fp16"
+  num_workers: 0
+  pin_memory: true
+
+seed: 42

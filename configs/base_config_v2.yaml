@@ -1,0 +1,45 @@
+﻿# CompactShakkil — الإعدادات النهائية بعد التقسيم الذكي
+
+data:
+  raw_dir: "data/raw/tashkeela"
+  processed_dir: "data/processed"
+  max_seq_length: 300
+  train_split: 0.90
+  val_split: 0.05
+  test_split: 0.05
+
+model:
+  name: "CompactShakkil-Base"
+  d_model: 256
+  nhead: 8
+  num_encoder_layers: 4
+  dim_feedforward: 1024
+  dropout: 0.1
+  max_position: 512
+
+training:
+  batch_size: 6
+  gradient_accumulation: 10
+  learning_rate: 5.0e-4
+  weight_decay: 0.01
+  warmup_steps: 8000
+  num_epochs: 3
+  max_grad_norm: 1.0
+  label_smoothing: 0.1
+  scheduler: "cosine"
+
+logging:
+  output_dir: "outputs_v2"
+  log_interval: 200
+  eval_interval: 8000
+  save_top_k: 3
+  use_wandb: false
+  wandb_project: "compactshakkil"
+
+device:
+  use_cuda: true
+  mixed_precision: "fp16"
+  num_workers: 0
+  pin_memory: true
+
+seed: 42

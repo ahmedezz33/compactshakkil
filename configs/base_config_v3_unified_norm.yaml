@@ -1,0 +1,46 @@
+# CompactShakkil V3-unified-NORM — إعادة صقل موحّد على بيانات مُطبَّعة اصطلاحيًّا
+# مطابق تمامًا لوصفة V3-unified الفائزة، لكن العامّ = processed_clean_norm
+# (لام «ال» القمريّة العارية → سكون ، همزة إلى/إذا/إذ → كسرة).
+# القرآن (processed_quran) يُترك كما هو احترامًا للنصّ الأصليّ.
+
+init_checkpoint: "outputs_v3/best_model.pt"   # نفس نقطة انطلاق النسخة الموحّدة الأصلية
+
+data:
+  gen_dir: "data/processed_clean_norm"   # العامّ بعد التنظيف الاصطلاحيّ
+  quran_dir: "data/processed_quran"      # القرآن كما هو (بلا تطبيع)
+  max_seq_length: 300
+  gen_cap: 700000
+  quran_repeat: 8
+  val_cap: 20000
+
+model:
+  name: "CompactShakkil-V3-unified-norm"
+  d_model: 256
+  nhead: 8
+  num_encoder_layers: 4
+  dim_feedforward: 1024
+  dropout: 0.1
+  max_position: 512
+
+training:
+  batch_size: 6
+  gradient_accumulation: 10
+  learning_rate: 4.0e-5        # نفس صقل V3-unified (أخفض من صقل القرآن)
+  weight_decay: 0.01
+  warmup_steps: 100
+  max_steps: 14000             # يتوقّف فعليًّا ~10000 (حقبة واحدة على المزيج)
+  max_grad_norm: 1.0
+  label_smoothing: 0.0
+
+logging:
+  output_dir: "outputs_v3_unified_norm"
+  log_interval: 20
+  eval_interval: 500
+
+device:
+  use_cuda: true
+  mixed_precision: "fp16"
+  num_workers: 0
+  pin_memory: true
+
+seed: 42

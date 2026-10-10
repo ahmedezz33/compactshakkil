@@ -1,0 +1,12 @@
+# مُصنِّف عائلة الحالة (متخصّص، من الصفر) — الهدف تجاوز 97.45%
+data:
+  gen_dir: "data/processed_clean"
+  pos_dir: "data/processed_clean_oracle"   # تسميات العائلة الذهبيّة
+  max_seq_length: 300
+  gen_cap: 400000
+  val_cap: 8000
+model: {name: "casecls", d_model: 256, nhead: 8, num_encoder_layers: 4, dim_feedforward: 1024, dropout: 0.1, max_position: 512}
+training: {batch_size: 6, gradient_accumulation: 10, learning_rate: 3.0e-4, weight_decay: 0.01, warmup_steps: 500, max_steps: 12000, max_grad_norm: 1.0}
+logging: {output_dir: "outputs_casecls", eval_interval: 1000}
+device: {use_cuda: true, mixed_precision: "fp16", num_workers: 0, pin_memory: true}
+seed: 42

@@ -1,0 +1,47 @@
+# CompactShakkil V3-unified — نموذج موحّد للمجالين (قرآن + عامّ)
+# صقل V3 على مزيج العامّ النظيف + القرآن (مُضاعَفًا للاحتفاظ). مفردات vocab_v2 (47).
+
+init_checkpoint: "outputs_v3/best_model.pt"
+
+data:
+  gen_dir: "data/processed_clean"      # العامّ النظيف
+  quran_dir: "data/processed_quran"    # القرآن
+  max_seq_length: 300
+  gen_cap: 700000
+  quran_repeat: 8                       # مضاعفة القرآن كي لا يُنسى
+  val_cap: 3000
+
+model:
+  name: "CompactShakkil-V3-unified"
+  d_model: 256
+  nhead: 8
+  num_encoder_layers: 4
+  dim_feedforward: 1024
+  dropout: 0.1
+  max_position: 512
+
+training:
+  batch_size: 6
+  gradient_accumulation: 10
+  learning_rate: 4.0e-5
+  weight_decay: 0.01
+  warmup_steps: 500
+  num_epochs: 1
+  max_steps: 14000
+  max_grad_norm: 1.0
+  label_smoothing: 0.0
+  scheduler: "cosine"
+
+logging:
+  output_dir: "outputs_v3_unified"
+  log_interval: 200
+  eval_interval: 2000
+  use_wandb: false
+
+device:
+  use_cuda: true
+  mixed_precision: "fp16"
+  num_workers: 0
+  pin_memory: true
+
+seed: 42

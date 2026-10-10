@@ -1,0 +1,49 @@
+# CompactShakkil V3 — صقل (Fine-tuning) على القرآن فقط
+# الهدف: متخصّص قرآنيّ لنظام Reverence-Aware (الحفظ الدقيق مطلوب، لا تعميم)
+
+# يبدأ من أوزان V2 (نفس مفردات 47 رمزًا مع الرموز القرآنية)
+init_checkpoint: "outputs_v2/best_model.pt"
+
+data:
+  raw_dir: "data/raw/tashkeela"
+  processed_dir: "data/processed_quran"   # القرآن فقط
+  max_seq_length: 300
+  train_split: 0.90
+  val_split: 0.05
+  test_split: 0.05
+
+model:
+  name: "CompactShakkil-V3-Quran"
+  d_model: 256
+  nhead: 8
+  num_encoder_layers: 4
+  dim_feedforward: 1024
+  dropout: 0.1
+  max_position: 512
+
+training:
+  batch_size: 6
+  gradient_accumulation: 10
+  learning_rate: 1.0e-4        # أخفض من V2 (5e-4) — صقل لا تدريب من الصفر
+  weight_decay: 0.01
+  warmup_steps: 50             # قليل (البيانات صغيرة)
+  num_epochs: 25
+  max_grad_norm: 1.0
+  label_smoothing: 0.0         # 0 للحفظ الأدقّ (متخصّص لا معمِّم)
+  scheduler: "cosine"
+
+logging:
+  output_dir: "outputs_v3"
+  log_interval: 20
+  eval_interval: 50            # تقييم متكرّر (بيانات صغيرة)
+  save_top_k: 3
+  use_wandb: false
+  wandb_project: "compactshakkil"
+
+device:
+  use_cuda: true
+  mixed_precision: "fp16"
+  num_workers: 0
+  pin_memory: true
+
+seed: 42

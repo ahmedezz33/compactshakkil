@@ -1,0 +1,196 @@
+
+════════════════════════════════════════════════════════════════════════════
+║ قال   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 1
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb    ق.#.ل     قال     قالَ     a    1ا3َ     PV_V          said+he;it_<verb>
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['قُلْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ باع   (الأصل الصحيح: ي)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 7
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb    ب.#.ع     باع     باعَ     a    1ا3َ     PV_V          sell+he;it_<verb>
+  noun    ب.#.ع     باع     باع      na   1ا3      Ndu           fathom_(3_meters)
+  noun    ب.#.ع     باع     باعَ     na   1ا3َ     Ndu           fathom_(3_meters)+[def.acc.]
+  noun    ب.#.ع     باع     باعٌ     na   1ا3ٌ     Ndu           fathom_(3_meters)+[indef.nom.]
+  noun    ب.#.ع     باع     باعِ     na   1ا3ِ     Ndu           fathom_(3_meters)+[def.gen.]
+  noun    ب.#.ع     باع     باعٍ     na   1ا3ٍ     Ndu           fathom_(3_meters)+[indef.gen.]
+  noun    ب.#.ع     باع     باعُ     na   1ا3ُ     Ndu           fathom_(3_meters)+[def.nom.]
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['بِعْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ صام   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 1
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb    ص.#.م     صام     صامَ     a    1ا3َ     PV_V          abstain;fast+he;it_<verb>
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['صُمْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ طال   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 1
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb    ط.#.ل     طال     طالَ     a    1ا3َ     PV_V_intr     be_long+he;it_<verb>
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['طُلْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ دار   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 15
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  noun    د.#.ر     دار     دار      na   1ا3      Ndu           house;home
+  noun    د.#.ر     دار     دارَ     na   1ا3َ     Ndu           house;home+[def.acc.]
+  noun    د.#.ر     دار     دارٌ     na   1ا3ٌ     Ndu           house;home+[indef.nom.]
+  noun    د.#.ر     دار     دارِ     na   1ا3ِ     Ndu           house;home+[def.gen.]
+  noun    د.#.ر     دار     دارٍ     na   1ا3ٍ     Ndu           house;home+[indef.gen.]
+  noun    د.#.ر     دار     دارُ     na   1ا3ُ     Ndu           house;home+[def.nom.]
+  verb    د.#.ر     دار     دارَ     a    1ا3َ     PV_V          go_around;turn+he;it_<verb>
+  noun    د.#.ر     دارِي   دار      na   1ا3      NK            aware;knowing;cognizant
+  noun    د.#.ر     دارِي   دارٍ     na   1ا3ٍ     NK            aware;knowing;cognizant+[indef.gen
+  adj     د.ر.ر     دارّ    دارّ     na   1ا2ّ     N/ap          copious;showering
+  adj     د.ر.ر     دارّ    دارَّ    na   1ا2َّ    N/ap          copious;showering+[def.acc.]
+  adj     د.ر.ر     دارّ    دارٌّ    na   1ا2ٌّ    N/ap          copious;showering+[indef.nom.]
+  adj     د.ر.ر     دارّ    دارِّ    na   1ا2ِّ    N/ap          copious;showering+[def.gen.]
+  adj     د.ر.ر     دارّ    دارٍّ    na   1ا2ٍّ    N/ap          copious;showering+[indef.gen.]
+  adj     د.ر.ر     دارّ    دارُّ    na   1ا2ُّ    N/ap          copious;showering+[def.nom.]
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['دُرْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ كان   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 5
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb_pseudoك.#.ن     كَأَنَّ كَأَنَّ  na   1َأَ3َّ  FW-Wa         as_if
+  verb    ك.#.ن     كان     كانَ     a    1ا3َ     PV_V          was;were+he;it_<verb>
+  noun    #.#.ن     آن      كَآن     na   كَآ3     N             like;such_as+time;moment
+  noun    #.#.ن     آن      كَآنِ    na   كَآ3ِ    N             like;such_as+time;moment+[def.gen.
+  noun    #.#.ن     آن      كَآنٍ    na   كَآ3ٍ    N             like;such_as+time;moment+[indef.ge
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['كُنْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ زاد   (الأصل الصحيح: ي)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 7
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  noun    ز.#.د     زاد     زاد      na   1ا3      N             provisions;stores
+  noun    ز.#.د     زاد     زادَ     na   1ا3َ     N             provisions;stores+[def.acc.]
+  noun    ز.#.د     زاد     زادٌ     na   1ا3ٌ     N             provisions;stores+[indef.nom.]
+  noun    ز.#.د     زاد     زادِ     na   1ا3ِ     N             provisions;stores+[def.gen.]
+  noun    ز.#.د     زاد     زادٍ     na   1ا3ٍ     N             provisions;stores+[indef.gen.]
+  noun    ز.#.د     زاد     زادُ     na   1ا3ُ     N             provisions;stores+[def.nom.]
+  verb    ز.#.د     زاد     زادَ     a    1ا3َ     PV_V          increase;exceed;add+he;it_<verb>
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['زِدْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ خاف   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 4
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  noun    خ.ف.#     خافِي   خاف      na   1ا2      NK            hidden;secret
+  noun    خ.ف.#     خافِي   خافٍ     na   1ا2ٍ     NK            hidden;secret+[indef.gen.]
+  verb    خ.#.ف     خاف     خافَ     a    1ا3َ     PV_V_intr     be_scared;be_afraid;be_frightened+
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['خِفْتُ', 'خِفْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ نام   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 4
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  noun    ن.م.م     نامِي   نام      na   1ا2ّ     NK            developing
+  noun    ن.م.م     نامِي   نامٍ     na   1ا2ٍّ    NK            developing+[indef.gen.]
+  verb    ن.#.م     نام     نامَ     a    1ا3َ     PV_V          sleep;lie_down+he;it_<verb>
+  verb    ن.#.م     نَأَم   نَأَمَ   a    1َأَ3َ   PV            resound;groan+he;it_<verb>
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['نِمْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ مات   (الأصل الصحيح: و)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 3
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb    م.#.ت     مات     ماتَ     a    1ا3َ     PV_V          die;pass_away+he;it_<verb>
+  noun    #.ت.#     مَأْتَى مَآت     na   مَآ2     NK            places_of_origin;sources
+  noun    #.ت.#     مَأْتَى مَآتٍ    na   مَآ2ٍ    NK            places_of_origin;sources+[indef.ge
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['مُتُّ']
+
+════════════════════════════════════════════════════════════════════════════
+║ طاب   (الأصل الصحيح: ي)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 7
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  noun    ط.#.ب     طاب     طاب      na   1ا3      N/At          palm_frond
+  noun    ط.#.ب     طاب     طابَ     na   1ا3َ     N/At          palm_frond+[def.acc.]
+  noun    ط.#.ب     طاب     طابٌ     na   1ا3ٌ     N/At          palm_frond+[indef.nom.]
+  noun    ط.#.ب     طاب     طابِ     na   1ا3ِ     N/At          palm_frond+[def.gen.]
+  noun    ط.#.ب     طاب     طابٍ     na   1ا3ٍ     N/At          palm_frond+[indef.gen.]
+  noun    ط.#.ب     طاب     طابُ     na   1ا3ُ     N/At          palm_frond+[def.nom.]
+  verb    ط.#.ب     طاب     طابَ     a    1ا3َ     PV_V_intr     be_good;be_pleasant+he;it_<verb>
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['طِبْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ هاب   (الأصل الصحيح: ي)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 1
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb    ه.#.ب     هاب     هابَ     a    1ا3َ     PV_V          fear;respect+he;it_<verb>
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['هِبْتُ']
+
+════════════════════════════════════════════════════════════════════════════
+║ سار   (الأصل الصحيح: ي)
+════════════════════════════════════════════════════════════════════════════
+إجمالي التحليلات (كل القراءات): 13
+  pos     root      lex     diac     vox  pattern  stemcat       gloss
+  verb    س.ر.ر     سارّ    سارَّ    a    1ا2َّ    PV_V          confide_a_secret+he;it_<verb>
+  noun    س.ر.#     سارِي   سار      na   1ا2      NK            effective;valid
+  noun    س.ر.#     سارِي   سارٍ     na   1ا2ٍ     NK            effective;valid+[indef.gen.]
+  verb    س.#.ر     سار     سارَ     a    1ا3َ     PV_V          move;march+he;it_<verb>
+  adj     س.ر.ر     سارّ    سارّ     na   1ا2ّ     N-ap          delightful;cheering
+  adj     س.ر.ر     سارّ    سارَّ    na   1ا2َّ    N-ap          delightful;cheering+[def.acc.]
+  adj     س.ر.ر     سارّ    سارٌّ    na   1ا2ٌّ    N-ap          delightful;cheering+[indef.nom.]
+  adj     س.ر.ر     سارّ    سارِّ    na   1ا2ِّ    N-ap          delightful;cheering+[def.gen.]
+  adj     س.ر.ر     سارّ    سارٍّ    na   1ا2ٍّ    N-ap          delightful;cheering+[indef.gen.]
+  adj     س.ر.ر     سارّ    سارُّ    na   1ا2ُّ    N-ap          delightful;cheering+[def.nom.]
+  verb    ر.#.#     راوَنْد سَأَرَ   a    سَأَ1َ   IV_0hwnyn     will_+_I+see;think;believe
+
+  المضارع المعلوم (3ms):  []
+  المضارع المجهول (3ms): []
+  الماضي المتكلّم (1s):   ['سِرْتُ']

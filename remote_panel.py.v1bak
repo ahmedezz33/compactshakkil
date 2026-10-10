@@ -1,0 +1,214 @@
+# -*- coding: utf-8 -*-
+"""
+remote_panel.py — لوحةُ تحكّمٍ خفيفةٌ من الجوّال (عبرَ Tailscale) لمشروع CompactShakkil.
+تُشغّل/توقِف المهامَّ (تدريب/صقل/تنظيف/تطبيق)، تبثُّ السجلَّ الحيّ (DER أولًا بأوّل)،
+تعرضُ حالةَ GPU، وتسمحُ بأمرٍ حرٍّ في مجلّد المشروع. محميّةٌ برمزِ دخولٍ سرّيّ.
+
+التشغيل:  python remote_panel.py          (ثمّ افتحْ من الجوّال عبرَ Tailscale)
+يتطلّب:   pip install flask
+الأمان:   استعمِلْه فقط عبرَ شبكةِ Tailscale الخاصّة (لا تفتحْ منفذَه للإنترنت العامّ).
+"""
+import os, sys, json, time, secrets, subprocess, threading, glob
+from functools import wraps
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+LOGDIR = os.path.join(HERE, "logs"); os.makedirs(LOGDIR, exist_ok=True)
+PORT = int(os.environ.get("PANEL_PORT", "8600"))
+IS_WIN = os.name == "nt"
+
+# رمزُ الدخول: من ملفٍّ، أو يُولَّدُ مرّةً ويُحفَظ
+_TOKF = os.path.join(HERE, "panel_token.txt")
+if os.path.exists(_TOKF):
+    TOKEN = open(_TOKF, encoding="utf-8").read().strip()
+else:
+    TOKEN = secrets.token_urlsafe(10)
+    open(_TOKF, "w", encoding="utf-8").write(TOKEN)
+
+# المهامُّ المعروفةُ (مفتاح → ملفُّ bat + وصف)
+TASKS = {
+    "train_large": ("run_train_large.bat", "تدريب القاعدة الكبيرة"),
+    "finetune":    ("run_finetune_diac.bat", "صقل التشكيل"),
+    "ensemble":    ("run_ensemble_mixed.bat", "مقارنة/دمج النماذج"),
+    "clean":       ("run_clean_data.bat", "تنظيف البيانات"),
+    "app":         ("run_app_teach.bat", "تطبيق التشكيل (Gradio)"),
+}
+_PROC = {}   # key -> {"pid":int, "log":path, "t":float}
+
+def _log_path(key):
+    return os.path.join(LOGDIR, f"{key}.log")
+
+def start_task(key):
+    bat, _ = TASKS[key]
+    if not os.path.exists(os.path.join(HERE, bat)):
+        return False, f"لا يوجد {bat}"
+    log = _log_path(key)
+    f = open(log, "w", encoding="utf-8", errors="replace")
+    if IS_WIN:
+        p = subprocess.Popen(["cmd", "/c", bat], cwd=HERE, stdout=f, stderr=subprocess.STDOUT,
+                             creationflags=0x00000200)  # CREATE_NEW_PROCESS_GROUP
+    else:
+        p = subprocess.Popen(["bash", bat], cwd=HERE, stdout=f, stderr=subprocess.STDOUT)
+    _PROC[key] = {"pid": p.pid, "log": log, "t": time.time(), "proc": p}
+    return True, f"بدأ {key} (pid {p.pid})"
+
+def stop_task(key):
+    info = _PROC.get(key)
+    if not info:
+        return False, "غير مشتغل"
+    pid = info["pid"]
+    try:
+        if IS_WIN:
+            subprocess.run(["taskkill", "/PID", str(pid), "/T", "/F"], capture_output=True)
+        else:
+            subprocess.run(["pkill", "-TERM", "-P", str(pid)], capture_output=True)
+            os.kill(pid, 15)
+    except Exception as e:
+        return False, f"تعذّر الإيقاف: {e}"
+    _PROC.pop(key, None)
+    return True, f"أُوقِف {key}"
+
+def is_running(key):
+    info = _PROC.get(key)
+    if not info: return False
+    p = info.get("proc")
+    if p and p.poll() is not None:   # انتهى
+        return False
+    return True
+
+def tail(path, n=40):
+    if not os.path.exists(path): return ""
+    try:
+        with open(path, "rb") as f:
+            f.seek(0, 2); size = f.tell()
+            back = min(size, 8000); f.seek(size - back)
+            data = f.read().decode("utf-8", "replace")
+        return "\n".join(data.splitlines()[-n:])
+    except Exception as e:
+        return f"(تعذّر قراءة السجلّ: {e})"
+
+def gpu_status():
+    try:
+        out = subprocess.run(["nvidia-smi", "--query-gpu=utilization.gpu,memory.used,memory.total,temperature.gpu",
+                              "--format=csv,noheader,nounits"], capture_output=True, text=True, timeout=8)
+        if out.returncode == 0 and out.stdout.strip():
+            u, mu, mt, tp = [x.strip() for x in out.stdout.strip().splitlines()[0].split(",")]
+            return f"GPU {u}% | ذاكرة {mu}/{mt}MB | حرارة {tp}°"
+    except Exception:
+        pass
+    return "GPU: غير متاح"
+
+def latest_der(key="train_large"):
+    """آخرُ سطرٍ فيه DER من سجلِّ المهمّة (للعرضِ السريع)."""
+    t = tail(_log_path(key), 200)
+    der = [ln for ln in t.splitlines() if "DER=" in ln]
+    return der[-1].strip() if der else "—"
+
+try:
+    from flask import Flask, request, jsonify, Response
+except Exception:
+    print("Flask غير مثبَّت. ثبّتْه: pip install flask"); sys.exit(1)
+
+app = Flask(__name__)
+
+def require_token(fn):
+    @wraps(fn)
+    def w(*a, **k):
+        tok = request.args.get("t") or request.headers.get("X-Token")
+        if tok != TOKEN:
+            return Response("ممنوع: رمزٌ خاطئ", status=403)
+        return fn(*a, **k)
+    return w
+
+PAGE = """<!doctype html><html lang=ar dir=rtl><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>تحكّم CompactShakkil</title>
+<style>
+ body{font-family:system-ui,Arial;margin:0;background:#0f1419;color:#e6edf3;padding:12px}
+ h2{margin:.3em 0}.card{background:#1a2027;border:1px solid #2a3340;border-radius:12px;padding:12px;margin:10px 0}
+ button{font-size:16px;padding:10px 14px;margin:4px;border:0;border-radius:10px;background:#2d6cdf;color:#fff}
+ button.stop{background:#c0392b}button.sec{background:#3a4654}
+ pre{white-space:pre-wrap;background:#0b0e12;padding:10px;border-radius:8px;max-height:45vh;overflow:auto;font-size:13px}
+ .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+ input{font-size:16px;padding:8px;border-radius:8px;border:1px solid #2a3340;background:#0b0e12;color:#e6edf3;flex:1}
+ .k{color:#8b98a5;font-size:13px}.ok{color:#3fb950}
+</style></head><body>
+<h2>تحكّم CompactShakkil</h2>
+<div class=card><div class=row><b id=gpu>…</b></div><div class=k id=der>…</div></div>
+<div class=card id=tasks></div>
+<div class=card>
+  <div class=k>سجلّ:</div>
+  <div class=row><select id=sel style="flex:1;padding:8px;border-radius:8px;background:#0b0e12;color:#e6edf3;border:1px solid #2a3340"></select>
+  <button class=sec onclick=refresh()>تحديث</button></div>
+  <pre id=log>…</pre>
+</div>
+<div class=card>
+  <div class=k>أمرٌ حرّ (في مجلّد المشروع):</div>
+  <div class=row><input id=cmd placeholder="مثل: dir أو .\\run_ensemble_mixed.bat">
+  <button onclick=runcmd()>تنفيذ</button></div>
+  <pre id=cmdout></pre>
+</div>
+<script>
+const T=new URLSearchParams(location.search).get('t')||'';
+const TASKS=__TASKS__;
+function api(p,o){o=o||{};o.headers=Object.assign(o.headers||{},{'X-Token':T});return fetch(p+(p.includes('?')?'&':'?')+'t='+encodeURIComponent(T),o)}
+function drawTasks(st){let h='';for(const k in TASKS){const on=st[k];h+=`<div class=row style="justify-content:space-between"><span>${TASKS[k]} ${on?'<span class=ok>● يعمل</span>':''}</span><span>`+
+ `<button onclick="act('${k}','start')">تشغيل</button><button class=stop onclick="act('${k}','stop')">إيقاف</button></span></div>`}
+ document.getElementById('tasks').innerHTML=h;
+ const sel=document.getElementById('sel');if(!sel.dataset.init){for(const k in TASKS){sel.innerHTML+=`<option value=${k}>${TASKS[k]}</option>`}sel.dataset.init=1;sel.onchange=refresh}}
+function status(){api('/status').then(r=>r.json()).then(d=>{document.getElementById('gpu').textContent=d.gpu;document.getElementById('der').textContent='آخر DER: '+d.der;drawTasks(d.running)})}
+function refresh(){const k=document.getElementById('sel').value;api('/tail?key='+k).then(r=>r.text()).then(t=>{document.getElementById('log').textContent=t||'(فارغ)'})}
+function act(k,a){api('/'+a+'?key='+k,{method:'POST'}).then(r=>r.text()).then(t=>{status();if(a=='start')setTimeout(refresh,800)})}
+function runcmd(){const c=document.getElementById('cmd').value;if(!c)return;document.getElementById('cmdout').textContent='…';
+ api('/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({cmd:c})}).then(r=>r.text()).then(t=>document.getElementById('cmdout').textContent=t)}
+status();refresh();setInterval(status,5000);setInterval(refresh,5000);
+</script></body></html>"""
+
+@app.route("/")
+@require_token
+def home():
+    return PAGE.replace("__TASKS__", json.dumps({k: v[1] for k, v in TASKS.items()}, ensure_ascii=False))
+
+@app.route("/status")
+@require_token
+def status():
+    return jsonify({"gpu": gpu_status(), "der": latest_der(),
+                    "running": {k: is_running(k) for k in TASKS}})
+
+@app.route("/tail")
+@require_token
+def tail_route():
+    key = request.args.get("key", "train_large")
+    return Response(tail(_log_path(key), 60), mimetype="text/plain")
+
+@app.route("/start", methods=["POST"])
+@require_token
+def start_route():
+    key = request.args.get("key")
+    if key not in TASKS: return Response("مهمّة مجهولة", status=400)
+    ok, msg = start_task(key); return Response(msg, status=200 if ok else 500)
+
+@app.route("/stop", methods=["POST"])
+@require_token
+def stop_route():
+    key = request.args.get("key")
+    ok, msg = stop_task(key); return Response(msg, status=200 if ok else 500)
+
+@app.route("/run", methods=["POST"])
+@require_token
+def run_route():
+    cmd = (request.get_json(silent=True) or {}).get("cmd", "").strip()
+    if not cmd: return Response("لا أمر", status=400)
+    try:
+        r = subprocess.run(cmd, cwd=HERE, shell=True, capture_output=True, text=True, timeout=120)
+        return Response((r.stdout or "") + (("\n[stderr]\n" + r.stderr) if r.stderr else ""), mimetype="text/plain")
+    except Exception as e:
+        return Response(f"تعذّر: {e}", status=500)
+
+if __name__ == "__main__":
+    ip = os.environ.get("PANEL_HOST", "0.0.0.0")
+    print("=" * 56)
+    print(f"  لوحةُ التحكّم تعمل على المنفذ {PORT}")
+    print(f"  رمزُ الدخول: {TOKEN}")
+    print(f"  من الجوّال (عبر Tailscale):  http://<عنوان Tailscale للحاسوب>:{PORT}/?t={TOKEN}")
+    print("=" * 56)
+    app.run(host=ip, port=PORT, threaded=True)

@@ -1,0 +1,23 @@
+================================================================================
+بطاقة ثقة — F:\Arabic\tashkil_project\compactshakkil_v1_baseline\best_model.pt
+================================================================================
+F:\Arabic\tashkil_project\venv\Lib\site-packages\torch\nn\modules\transformer.py:379: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+الجهاز=cuda  val=3,000  test=6,000
+
+DER = 2.38%
+AUROC (فرز الخطأ) = 0.9409   ← الأعلى أفضل
+T المُثلى = 0.670  (شحذ/ناقص ثقة)
+ECE خام = 8.572%   →   ECE بعد المعايرة = 0.540%
+متوسّط الثقة الخام = 89.05%
+
+  توجيه بعتبات معايَرة (T مطبَّقة):
+       T    تغطية   DER مقبول   مراجعة  أخطاء مُلتقطة
+   0.900    96.3%      1.082%     3.7%          56.3%
+   0.950    94.6%      0.811%     5.4%          67.8%
+   0.980    91.1%      0.490%     8.9%          81.3%
+   0.990    79.1%      0.166%    20.9%          94.5%
+   0.995     0.3%      0.688%    99.7%          99.9%
+
+للمقارنة: الأساس V1 كان DER=2.38% AUROC=0.941 T=0.67 ECE 8.57%→0.54%.
+إن ارتفع AUROC فوق 0.941 وثبت DER → حذف التنعيم حسّن الفرز فعلًا.
