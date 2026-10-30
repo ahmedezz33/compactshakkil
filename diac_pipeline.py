@@ -18,7 +18,7 @@ for _p in (str(_ROOT), str(_ROOT / "scripts")):
     if _p not in _sys.path:
         _sys.path.insert(0, _p)
 
-from reverence_aware_unified import load_quran_index, _norm   # noqa: E402
+from reverence_aware_unified import load_quran_index, _norm, _norm_nd   # noqa: E402
 from pronounce import fix_jalalah_lines, fix_lam              # noqa: E402
 import quran_audio                                            # noqa: E402
 
@@ -59,7 +59,7 @@ def route(line, respect=True):
     INF = _inf()
     k = _norm(line)
     hit = _retrieve_one(k)
-    if hit is not None and _norm(hit) == k:          # السطرُ آيةٌ واحدةٌ بالضبط
+    if hit is not None and (_norm(hit) == k or _norm_nd(hit) == _norm_nd(line)):  # آيةٌ واحدة (مع تسامحِ الخنجريّة)
         return hit, "استرداد (آية)"
     segs = [s for s in _AYA_SEP.split(line) if _norm(s)]
     if len(segs) >= 2:

@@ -49,6 +49,10 @@ def _norm(s):
         s=s.replace(_a,_b)                 # توحيدُ الرسم العثمانيّ مع المجرّد
     return " ".join(_KEEP.sub(" ", s).split())
 
+def _norm_nd(s):
+    """تطبيعٌ لا يميّزُ الخنجريّةَ (يُزيلُها بدل تحويلِها ألفًا) — لمطابقةِ الكتابةِ العاديّةِ بالرسمِ المشكّل."""
+    return _norm(s.replace(SMALL_ALIF, ""))
+
 def _declean(orig):
     """يُزيل رموز الوقف (كتوكِنات) مع إبقاء التشكيل، فتحاذي كلماتُه التطبيعَ 1:1."""
     return " ".join(w for w in orig.split() if any(c not in QSYM for c in w))
@@ -92,6 +96,9 @@ def load_quran_index(path):
         if k and k not in index: index[k]=o
     def add_verse(orig):
         k=_norm(orig); add(k,orig)
+        if SMALL_ALIF in orig:                          # مفتاحٌ لا يميّزُ الخنجريّة ← يُخرِجُ الرسمَ المشكّل
+            knd=_norm_nd(orig)
+            if knd!=k: add(knd,orig)
         if k.startswith(BISM_NORM+" "):                 # افصل البسملةَ المدموجة
             add(k[len(BISM_NORM)+1:]," ".join(orig.split()[4:]))
     prim=_read_edition(path)                             # الأولويّة للنسخة المشكّلة
