@@ -1,5 +1,10 @@
-# استبدل النطاق بنطاقك (DuckDNS مثلًا). Caddy يُصدِر شهادة HTTPS تلقائيًّا.
+# CompactShakkil — Caddy reverse proxy (HTTPS تلقائيّ)
 shakkil.duckdns.org {
+    # تحصين: منعُ مسارات الإدارة من الإنترنت تمامًا.
+    # إعادةُ تحميلِ منطقِ الـ API تتمّ محلّيًّا عبر 127.0.0.1:8000 (reload_api.bat)، لا عبر الإنترنت.
+    @admin path /admin/*
+    respond @admin 403
+
     reverse_proxy 127.0.0.1:8000
     encode gzip
     request_body {

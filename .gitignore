@@ -100,3 +100,11 @@ admin_token.txt
 panel_secret.txt
 semantic_config.json
 panel_auth.json
+_archive/
+reports/
+lessons/
+*.skill
+COMPACTSHAKKIL_SKILL_latest.md
+*.docx
+*.mp4
+data/quran_gold_sample.txt

@@ -67,6 +67,15 @@ def _retrieve_one(k):
         if vk in k: return IDX[vk]
     return None
 
+def _num_pre(line):
+    """الأرقام ← كلماتٌ عربيّةٌ قبلَ تشكيلِ النموذج ليُشكّلَها في سياقِها (ثمانيةً وعشرين)."""
+    try:
+        import re as _re, num2ar
+        if not _re.search(r"[0-9\u0660-\u0669\u06F0-\u06F9]", line): return line
+        return num2ar.verbalize(line)
+    except Exception:
+        return line
+
 def route(line, respect=True):
     k=_norm(line)
     hit=_retrieve_one(k)
@@ -86,6 +95,7 @@ def route(line, respect=True):
     # ملاحظة: الآيةُ المضمّنةُ في سياقٍ لا تحذفُ ما حولَها — نشكّلُ النصَّ كلَّه،
     # ثمّ يستبدلُ restore_quran_tashkeel تشكيلَ الآيةِ (بين ﴿﴾/{}) من المصحفِ في مكانِها.
     # respect: احترم التشكيلَ الموجودَ في الإدخال وأكمِل الناقصَ فقط
+    line=_num_pre(line)   # الأرقام ← كلماتٌ مُشكَّلةٌ في سياقِها (لا يصل هنا إلّا النصُّ غيرُ القرآنيّ)
     out=INF.diacritize_partial(line) if respect else INF.diacritize(line)
     return out,"BERT-graft"
 
@@ -102,6 +112,9 @@ def diacritize(text, respect=True):
                 import iraab_fix; o=iraab_fix.correct(o)   # قواعدُ الإعراب الحتميّةُ الآمنة (جرّ/نصب اسم إنّ/أنْ)
             except Exception as _ie: print("iraab_fix skip:", _ie)
             o=fix_lam(fix_jalalah_lines(o))
+            try:
+                import lex_fix; o=lex_fix.apply_text(o)
+            except Exception as _le: print("lex_fix skip:", _le)
         outs.append(o); routes.append(r)
     result="\n".join(outs)
     try:
@@ -110,6 +123,24 @@ def diacritize(text, respect=True):
     return result," | ".join(dict.fromkeys(routes))
 
 # ---------- تبويب الإعراب والشرح ----------
+def confidence_html(text):
+    """يُلوّنُ الكلماتِ منخفضةَ الثقةِ (الأحمرُ=ثقةٌ ضعيفة، الأصفرُ=متوسّطة). عرضٌ فقط."""
+    if not text or not text.strip(): return "<div dir='rtl'>—</div>"
+    out=[]
+    for line in text.split("\n"):
+        if not line.strip(): out.append("<br>"); continue
+        try: ws,wc=INF.confidence(line)
+        except Exception: ws,wc=line.split(),[1.0]*len(line.split())
+        for i,w in enumerate(ws):
+            c=wc[i] if i<len(wc) else 1.0
+            bg=("#ffd4d4" if c<0.90 else "#fff3cd" if c<0.98 else "transparent")
+            out.append(f"<span style='background:{bg};padding:1px 4px;border-radius:3px' title='ثقة {int(c*100)}%'>{w}</span>")
+        out.append("<br>")
+    return ("<div dir='rtl' style='font-size:22px;line-height:2.8'>"+" ".join(out)+"</div>"
+            "<div style='font-size:12px;color:#888;margin-top:6px'>الألوان: "
+            "<span style='background:#ffd4d4'>أحمر</span> ثقةٌ ضعيفة (&lt;90%) · "
+            "<span style='background:#fff3cd'>أصفر</span> متوسّطة (&lt;98%) — راجِعْها.</div>")
+
 def explain_html(text):
     if not text or not text.strip(): return "<div dir='rtl'>—</div>"
     dia,_=diacritize(text)
@@ -668,6 +699,8 @@ with gr.Blocks(title=TITLE) as demo:
         gr.Examples(TOPIC_EX,inputs=t2,label="أمثلةٌ تعليميّة (اضغط لتجربتها)")
         h2=gr.HTML()
         gr.Button("حلّل واشرح",variant="primary").click(explain_html,t2,h2)
+        hconf=gr.HTML()
+        gr.Button("أظهِر ثقةَ النموذج").click(confidence_html,t2,hconf)
         gr.HTML(LEGEND)
     with gr.Tab("③ تمارين"):
         t3=gr.Textbox(lines=4,label="نصّ التمرين (سيُخفى تشكيله)",rtl=True)

@@ -7,7 +7,7 @@
 import os, random, re
 random.seed(20)
 _WAQF=re.compile(r"[\u06D6-\u06ED]")  # رموزُ وقف/تجويد: في الصورةِ لا في الذهبيّ
-SRC=[("data/ocr_quran_pages","قرآن"),("data/ocr_classical_pages","تراث/عاديّ")]
+SRC=[("data/ocr_quran_pages","قرآن"),("data/ocr_classical_pages","تراث/عاديّ"),("data/ocr_classical_pages_more","تراث/مزيد")]
 rows=[]
 for d,tag in SRC:
     mf=os.path.join(d,"manifest.tsv")

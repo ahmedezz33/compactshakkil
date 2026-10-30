@@ -1,0 +1,8 @@
+{
+  "endpoint": "http://NAS_IP:11434/v1/chat/completions",
+  "model": "qwen2.5:3b",
+  "local": true,
+  "timeout": 60,
+  "max_words_per_text": 12,
+  "_ملاحظة": "انسخْ هذا إلى semantic_config.json في جذرِ المشروعِ بعدَ وضعِ NAS_IP الحقيقيّ."
+}

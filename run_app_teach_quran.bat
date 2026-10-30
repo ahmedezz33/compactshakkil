@@ -2,6 +2,8 @@
 chcp 65001 >nul
 cd /d "%~dp0"
 call venv\Scripts\activate.bat
+set OCR_PREPROCESS=0
+set OCR_MAX_SIDE=1600
 pip install gradio "transformers>=4.49" gtts edge-tts imageio-ffmpeg python-docx peft bitsandbytes -q --disable-pip-version-check
 if exist ocr_model.txt set /p OCR_MODEL=<ocr_model.txt
 set OCR_LORA=1

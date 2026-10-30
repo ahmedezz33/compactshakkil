@@ -10,6 +10,37 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from data.vocab_v2 import split_letters_and_diacritics, strip_diacritics
+import os as _os, json as _json, sqlite3 as _sq, functools as _ft, glob as _gl
+
+def _lex_db():
+    for c in ("lexicon/arabic_lexicon.db","arabic_lexicon.db"):
+        if _os.path.exists(c): return c
+    g=_gl.glob("**/arabic_lexicon.db",recursive=True)
+    return g[0] if g else None
+_LEXCON=None
+def _lex_con():
+    global _LEXCON
+    if _LEXCON is None:
+        p=_lex_db()
+        if not p: raise RuntimeError("no lexicon")
+        _LEXCON=_sq.connect(p, check_same_thread=False)
+    return _LEXCON
+@_ft.lru_cache(maxsize=50000)
+def _lex_pos(sk):
+    """مجموعةُ وسومِ pos للكلمةِ من المعجم (فارغةٌ إن لم تُعرَف)."""
+    try:
+        sk=strip_diacritics(sk)
+        cands={sk}
+        if len(sk)>2 and sk.endswith("ا"): cands.add(sk[:-1])
+        for c in cands:
+            r=_lex_con().execute("SELECT analyses_json FROM words WHERE word=? LIMIT 1",(c,)).fetchone()
+            if r and r[0]:
+                return frozenset(a.get("pos","") for a in _json.loads(r[0]))
+    except Exception:
+        return frozenset()
+    return frozenset()
+_NOMINAL_POS={"noun","noun_prop","adj","pron","pron_rel","pron_dem"}
+
 
 NOM={3,7,11}; ACC={1,5,9}; JAR={2,6,10}
 def family(c):
@@ -56,6 +87,11 @@ def is_present(sk):
     return sk.startswith("ي") and len(sk)>=4 and not sk.startswith("ال") and sk not in _Y_NOUNS
 def is_verb(sk):
     if sk in INNA or sk in KANA or sk in MABNI: return False
+    p=_lex_pos(sk)
+    if p:
+        if ("verb" in p) and not (p & _NOMINAL_POS): return True   # فعلٌ خالصٌ (معجم)
+        if (p & _NOMINAL_POS) and ("verb" not in p): return False  # اسمٌ خالصٌ (معجم)
+        # ملتبسٌ (اسم/فعل) ← أبقِ التخمينَ القديمَ المعتمدَ على الموضعِ والحركة
     return is_present(sk) or sk in PAST
 
 def explain(words):

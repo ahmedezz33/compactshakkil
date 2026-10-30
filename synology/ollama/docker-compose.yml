@@ -1,0 +1,17 @@
+# Ollama (Qwen) على السينولوجي — Container Manager → Project → Create → استورِدْ هذا الملفّ.
+# المنفذُ 11434 يُفتَحُ على الشبكةِ المحليّةِ فقط (لا تُمرِّرْه من الراوتر إلى الإنترنت).
+services:
+  ollama:
+    image: ollama/ollama:0.3.14
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./models:/root/.ollama          # النماذجُ تبقى هنا (لا تُعادُ تنزيلُها عند التحديث)
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h           # أبقِ النموذجَ محمّلًا (يُقلّلُ زمنَ أوّلِ طلب)
+      - OLLAMA_NUM_PARALLEL=1
+      - OLLAMA_MAX_LOADED_MODELS=1
+    # اضبطْ حسبَ ذاكرةِ السينولوجي (اترِكْ هامشًا للنظام):
+    mem_limit: 6g

@@ -2,9 +2,11 @@
 chcp 65001 >nul
 cd /d "%~dp0"
 call venv\Scripts\activate.bat
+set OCR_PREPROCESS=0
+set OCR_MAX_SIDE=1600
 python -m pip install -q fastapi "uvicorn[standard]" python-multipart --disable-pip-version-check
 if exist ocr_model.txt set /p OCR_MODEL=<ocr_model.txt
-set OCR_LORA=outputs_ocr_unified
+set OCR_LORA=outputs_ocr_unified_v1
 set API_PORT=8000
 echo === CompactShakkil API على المنفذ %API_PORT% ===
 echo الوثائق التفاعليّة: http://localhost:8000/docs

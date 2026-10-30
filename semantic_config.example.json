@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://api.openai.com/v1/chat/completions",
+  "model": "gpt-4o-mini",
+  "timeout": 20,
+  "max_words_per_text": 12,
+  "_ملاحظة": "انسخْه إلى semantic_config.json وعدّلْه. ضعِ المفتاحَ في semantic_key.txt (سطرٌ واحد). يعملُ مع أيِّ مزوّدٍ متوافقٍ مع OpenAI (غيّرِ endpoint/model)."
+}
