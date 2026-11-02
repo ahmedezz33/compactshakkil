@@ -9,6 +9,12 @@ app_teach.py — نظام تعليم النطق النحويّ (على نموذ�
 واجهة Gradio 6.0. التشغيل: python app_teach.py
 """
 import sys, os
+try:
+    import quran_integrity; quran_integrity.verify()   # حارسُ سلامةِ القرآن
+except SystemExit:
+    raise
+except Exception as _qi:
+    print("quran_integrity skip:", _qi)
 # ويندوز: أجبِر مخرجَ التطبيق كلَّه على UTF-8 لئلّا ينهار عند طبع العربيّة (cp1252)،
 # وعطّل wandb الذي يلفُّ المخرجَ (جاء مع f5-tts). يجب أن يسبق أيَّ استيرادٍ يطبع/يلفّ.
 os.environ.setdefault("WANDB_DISABLED","true"); os.environ.setdefault("WANDB_MODE","disabled")

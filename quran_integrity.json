@@ -1,0 +1,8 @@
+{
+  "_note": "بصماتُ سلامةِ القرآن — لا تُعدَّلْ يدويًّا. أعِدِ التوليدَ فقط بعدَ تغييرٍ مقصودٍ موثَّق.",
+  "hashes": {
+    "data/raw/quran/quran-simple.txt": "1416a706ef307fba68e2af6666af5ee7789338f2194cfe65202009d45b5f4a24",
+    "data/raw/quran/quran-simple-plain.txt": "7e729f13e8b743e00d87d9c11347a4a6a5328ede0b42d31a4c9bc058fc23d5a6",
+    "reverence_aware_unified.py": "3e18cebcf1128d260474131dd36415a6cc7b36ffe4e7dba034e9e76b659a9b81"
+  }
+}

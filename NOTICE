@@ -1,10 +1,57 @@
-هذا المشروعُ يَبني على نماذجَ وموارِدَ مفتوحةٍ، مع شكرٍ لأصحابِها:
+CompactShakkil
+Copyright (c) 2026 Ahmed Ezz
 
-- Qwen2-VL-2B-Instruct — Alibaba/Qwen — Apache License 2.0
-- Qari-OCR (NAMAA-Space) — ضبطٌ دقيقٌ فوق Qwen2-VL — Apache License 2.0
-- CAMeLBERT / AraBERT (CAMeL-Lab / aubmindlab) — نماذجُ عربيّةٌ مفتوحة
-- نصُّ القرآن — Tanzil.net — يُستعمَل دون تحريفٍ مع النسبة
-- تشكيلة (Tashkeela) — Taha Zerrouki — رخصة GPL (لا يُعادُ توزيعُ المجموعةِ الخام هنا)
-- المكتبة الشاملة — نصوصٌ تراثيّةٌ (ملكيّةٌ عامّة غالبًا)
+Required Notice (PolyForm Noncommercial 1.0.0):
+    Copyright (c) 2026 Ahmed Ezz — CompactShakkil
 
-التشكيلُ وبياناتُ التدريبِ الخامُّ (Tashkeela/الشاملة/تفريغاتُ القرآن) غيرُ مضمَّنةٍ في هذا المستودع.
+====================================================================
+1) الترخيص / LICENSING
+--------------------------------------------------------------------
+الإصداراتُ الجديدةُ من الأجزاءِ العلنيّةِ لهذا المشروعِ تخضعُ لترخيص
+PolyForm Noncommercial License 1.0.0 (انظر ملفَّ LICENSE): الاستخدامُ
+غيرُ التجاريِّ مسموحٌ، والاستخدامُ التجاريُّ يستلزمُ إذنًا من صاحبِ المشروع.
+الإصداراتُ المنشورةُ سابقًا تحتَ رخصةِ MIT تبقى تحتَ MIT (محفوظةٌ في
+LICENSE-MIT-prior.txt).
+
+New releases of the public parts are licensed under the PolyForm
+Noncommercial License 1.0.0 (see LICENSE). Noncommercial use is
+permitted; commercial use requires a separate license from the owner.
+Earlier releases under the MIT License remain under MIT.
+
+للترخيصِ التجاريّ / For commercial licensing:
+    راسِلْ صاحبَ المشروعَ عبرَ قناةِ التواصلِ المعلنةِ للخدمة
+    (the project's published service-contact channel).
+
+====================================================================
+2) سلامةُ نصِّ القرآن / QURAN TEXT INTEGRITY — إلزاميّ
+--------------------------------------------------------------------
+نصُّ القرآنِ الكريمِ ورسمُه المصحفيُّ ومنطقُ استرجاعِه (الملفّات:
+data/raw/quran/quran-simple*.txt و reverence_aware_unified.py)
+*لا يجوزُ تعديلُها*. أيُّ طرفٍ يستخدمُ المشروعَ ملزمٌ بإبقائِها كما هي.
+يوجدُ حارسُ سلامةٍ تقنيٌّ (quran_integrity.py) يتحقّقُ من ذلك عندَ الإقلاع.
+
+The Quran text, its Uthmani/mushaf rasm, and its retrieval logic MUST
+NOT be altered by any party. An integrity guard (quran_integrity.py)
+verifies this at startup.
+
+====================================================================
+3) مصدرُ نصِّ القرآن / QURAN TEXT SOURCE — Tanzil
+--------------------------------------------------------------------
+نصُّ القرآنِ مأخوذٌ من مشروع Tanzil (tanzil.net) وتُحكمُه شروطُه، ومنها
+المنعُ الصريحُ من تغييرِ النصّ ووجوبُ إبقاءِ إشعارِ حقوقِه (مضمَّنٌ في
+data/raw/quran/quran-simple.txt). استخدامُ هذا المشروعِ لا يُسقِطُ تلك الشروط.
+
+Quran text is from the Tanzil project (tanzil.net) and remains subject
+to Tanzil's terms, which prohibit changing the text and require keeping
+its copyright notice (embedded in quran-simple.txt).
+
+====================================================================
+4) القلبُ غيرُ المنشور / UNDISTRIBUTED CORE
+--------------------------------------------------------------------
+الأوزانُ المدرَّبةُ ومحوّلاتُ النموذجِ *غيرُ مضمَّنةٍ* في هذا المستودعِ
+(مستثناةٌ في .gitignore) وتُقدَّمُ عبرَ الخدمةِ الرسميّةِ فقط. الاستخدامُ
+المعتمَدُ للنموذجِ الكاملِ يكونُ عبرَ واجهةِ الخدمة (API).
+
+Trained weights and model adapters are NOT included in this repository
+(excluded via .gitignore) and are provided only through the official
+service. Use the full model via the service API.

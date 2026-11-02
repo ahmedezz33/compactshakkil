@@ -8,6 +8,12 @@ CompactShakkil API — خادمٌ تجاريٌّ يُغلّف محرّكات ا�
 التشغيل:  run_api.bat   (أو:  uvicorn api_server:app --host 0.0.0.0 --port 8000 --workers 1)
 """
 import os, json, time, tempfile, threading
+try:
+    import quran_integrity; quran_integrity.verify()   # حارسُ سلامةِ القرآن
+except SystemExit:
+    raise
+except Exception as _qi:
+    print("quran_integrity skip:", _qi)
 from pathlib import Path
 from fastapi import FastAPI, Header, HTTPException, UploadFile, File, Request
 from fastapi.middleware.cors import CORSMiddleware
