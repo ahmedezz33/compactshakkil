@@ -70,9 +70,13 @@ def do_train(a):
     _STATE=os.path.join(LORA_DIR,"train_state.json")
     _FRESH=os.environ.get("OCR_FRESH","0")=="1"
     resume = (not _FRESH) and os.path.exists(_STATE) and os.path.exists(os.path.join(LORA_DIR,"adapter_config.json"))
+    _INIT=os.environ.get("OCR_INIT_LORA","")
     if resume:
         model=PeftModel.from_pretrained(model, LORA_DIR, is_trainable=True)   # متابعة
         print("\U0001F501 متابعة من المحوّلات المحفوظة:", LORA_DIR)
+    elif _INIT and os.path.exists(os.path.join(_INIT,"adapter_config.json")):
+        model=PeftModel.from_pretrained(model, _INIT, is_trainable=True)      # بدء دافئ فعليّ
+        print("\U0001F525 بدء دافئ فعليّ من:", _INIT, "-> الإخراج:", LORA_DIR)
     else:
         lc=LoraConfig(r=16, lora_alpha=32, lora_dropout=0.05, bias="none",
             target_modules=["q_proj","k_proj","v_proj","o_proj","gate_proj","up_proj","down_proj"],
@@ -84,7 +88,7 @@ def do_train(a):
     import json as _json
     _OPT=os.path.join(LORA_DIR,"optimizer.pt")
     SAVE_EVERY=int(os.environ.get("OCR_SAVE_EVERY","50")); SEED=int(os.environ.get("OCR_SEED","1234"))
-    opt=torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=1e-4)
+    opt=torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=float(os.environ.get("OCR_LR","3e-5")))
     N=len(rows); done_global=0
     if resume and os.path.exists(_STATE):
         try:
@@ -108,6 +112,8 @@ def do_train(a):
                 try:
                     enc=build(proc, open_img(path), gold).to(dev)
                     out=model(**enc); loss=out.loss/ACC
+                    if not torch.isfinite(loss):
+                        print(f"\u26d4 خسارةٌ غيرُ منتهية (NaN/inf) عند العيّنة {i} - إيقافٌ بلا حفظٍ إضافيّ"); raise SystemExit("divergence")
                     loss.backward()
                 except Exception as e:
                     if i<3: print("تخطّي عيّنة:",e)
